@@ -1,0 +1,23 @@
+ORG 100h
+
+MOV AX, 0
+MOV DX, 1
+MOV BX, 2600h
+MOV CX, 6
+
+MOV [BX], AL
+INC BX
+MOV [BX], DL
+INC BX
+
+GEN_LOOP:
+    MOV AL, DL
+    ADD AL, AH
+    MOV [BX], AL
+    MOV AH, DL
+    MOV DL, AL
+    INC BX
+    LOOP GEN_LOOP
+
+RET
+
