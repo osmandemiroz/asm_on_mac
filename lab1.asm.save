@@ -1,0 +1,22 @@
+
+MOV AX, 0
+MOV DX, 1
+MOV RDI, 0x2600
+MOV CX, 6
+≈
+MOV byte [RDI], AL
+INC RDI
+MOV byte [RDI], DL
+INC RDI
+
+GEN_LOOP:
+    MOV AL, DL
+    ADD AL, AH
+MOV byte [RDI], AL
+    MOV AH, DL
+    MOV DL, AL
+    INC RDI
+    LOOP GEN_LOOP
+
+RET
+
